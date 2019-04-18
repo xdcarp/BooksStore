@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
+using BookStore.Services;
 
 namespace BookStore
 {
@@ -38,6 +39,8 @@ namespace BookStore
 
             services.AddDbContext<BookStoreContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookStoreContext")));
+
+            services.AddTransient<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

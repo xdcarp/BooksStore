@@ -14,49 +14,73 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Name)
+                @Html.DisplayNameFor(model => model.Books[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Author)
+                @Html.DisplayNameFor(model => model.Books[0].Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].ISBN)
+                @Html.DisplayNameFor(model => model.Books[0].ISBN)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Type)
+                @Html.DisplayNameFor(model => model.Books[0].Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].PlotReview)
+                @Html.DisplayNameFor(model => model.Books[0].PlotReview)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Book) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlotReview)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
-                <br />
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
-                <br />
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlotReview)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <br />
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                    <br />
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<h4>Send List By Email</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Customer.CustomerEmail" class="control-label"></label>
+                <input asp-for="Customer.CustomerEmail" class="form-control" />
+                <span asp-validation-for="Customer.CustomerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.CustomerName" class="control-label"></label>
+                <input asp-for="Customer.CustomerName" class="form-control" />
+                <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>            
+        </form>
+    </div>
+</div>

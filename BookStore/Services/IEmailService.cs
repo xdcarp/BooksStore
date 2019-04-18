@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Services
 {
-    public class IEmailService
+    public interface IEmailService
     {
+        Task SendMail(string subject, string toEmail, string message);
     }
 }
